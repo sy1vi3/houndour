@@ -7,8 +7,8 @@ import subprocess
 
 def do_startup(script_path: str):
     print(f'[Houndour] running startup script at {script_path}')
-    p = subprocess.check_output('bash ' + script_path, shell=True).decode('utf-8')
-    print(f'[Houndour] ran startup script:\n\n' + p)
+    subprocess.check_output('bash ' + script_path, shell=True).decode('utf-8')
+    print(f'[Houndour] ran startup script:\n\n')
     print('\n')
 
 if __name__ == '__main__':
