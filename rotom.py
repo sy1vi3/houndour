@@ -62,5 +62,8 @@ class Rotom:
     
     def get_timeout_limit(self) -> int:
         return self.__config['timeout_limit']
+    
+    def get_startup_script(self) -> str:
+        return self.__config['startup_script_path']
 
     

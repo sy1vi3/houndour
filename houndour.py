@@ -2,7 +2,13 @@ import rotom
 import json
 import docker
 import time
+import subprocess
 
+
+def do_startup(script_path: str):
+    print(f'[Houndour] running startup script at {script_path}')
+    output = subprocess.check_output(script_path)
+    print(f'[Houndour] ran startup script:\n{output}')
 
 if __name__ == '__main__':
     with open('houndour.json') as f:
@@ -10,6 +16,11 @@ if __name__ == '__main__':
 
     rotom_client = rotom.Rotom(config)
     docker_client = docker.from_env()
+
+    print('[Houndour] started, sleeping for 30 seconds')
+    time.sleep(1)
+    do_startup(rotom_client.get_startup_script())
+
     while True:
         rotom_client.get_status_page()
         needs_reboot = rotom_client.get_reboot_needed()

@@ -7,12 +7,13 @@
             "dockerName": "redroid2"
         },
         "my_third_device": {
-            "dockerName": "redroid5"
+            "dockerName": "redroid3"
         }
     },
     "check_interval": 60,
     "timeout_limit": 5,
     "rotom_url": "https://rotom.com",
     "rotom_user": "my_basic_auth_user",
-    "rotom_pass": "among us"
+    "rotom_pass": "among us",
+    "startup_script_path": "./startup.example.sh"
 }
