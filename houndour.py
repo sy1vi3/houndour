@@ -7,7 +7,7 @@ import subprocess
 
 def do_startup(script_path: str):
     print(f'[Houndour] running startup script at {script_path}')
-    p = subprocess.check_output('bash ./startup.sh', shell=True).decode('utf-8')
+    p = subprocess.check_output('bash ' + script_path, shell=True).decode('utf-8')
     print(f'[Houndour] ran startup script:\n\n' + p)
     print('\n')
 
