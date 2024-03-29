@@ -31,23 +31,26 @@ class Rotom:
         return devices_dict
     
     def get_status_page(self):
-        data = Rotom.data_list_to_dict(self.__session.get(self.__rotom_url).json()['devices'])
-        for device in self.__devices:
-            if device in data:
-                isAlive = data[device]['isAlive']
-                self.__devices[device]['isAlive'] = isAlive
-                if isAlive:
-                    self.__devices[device]['deathCount'] = 0
-                    self.__devices[device]['needsReboot'] = False
-                else:
-                    self.__devices[device]['deathCount'] += 1
-                    if self.__devices[device]['deathCount'] >= self.get_timeout_limit():
-                        self.__devices[device]['needsReboot'] = True
-                    else:
+        try:
+            data = Rotom.data_list_to_dict(self.__session.get(self.__rotom_url).json()['devices'])
+            for device in self.__devices:
+                if device in data:
+                    isAlive = data[device]['isAlive']
+                    self.__devices[device]['isAlive'] = isAlive
+                    if isAlive:
+                        self.__devices[device]['deathCount'] = 0
                         self.__devices[device]['needsReboot'] = False
-            else:
-                self.__devices[device]['isAlive'] = False
-                self.__devices[device]['needsReboot'] = True
+                    else:
+                        self.__devices[device]['deathCount'] += 1
+                        if self.__devices[device]['deathCount'] >= self.get_timeout_limit():
+                            self.__devices[device]['needsReboot'] = True
+                        else:
+                            self.__devices[device]['needsReboot'] = False
+                else:
+                    self.__devices[device]['isAlive'] = False
+                    self.__devices[device]['needsReboot'] = True
+        except Exception as e:
+            print(e)
 
     def get_reboot_needed(self) -> List[dict]:
         needs_reboot = list()
