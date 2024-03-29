@@ -19,7 +19,7 @@ if __name__ == '__main__':
     docker_client = docker.from_env()
 
     print('[Houndour] started, sleeping for 30 seconds')
-    time.sleep(1)
+    time.sleep(30)
     do_startup(rotom_client.get_startup_script())
 
     while True:
