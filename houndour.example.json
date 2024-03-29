@@ -15,5 +15,5 @@
     "rotom_url": "https://rotom.com",
     "rotom_user": "my_basic_auth_user",
     "rotom_pass": "among us",
-    "startup_script_path": "./startup.example.sh"
+    "startup_script_path": "./startup.sh"
 }

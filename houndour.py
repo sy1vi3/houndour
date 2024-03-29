@@ -7,8 +7,9 @@ import subprocess
 
 def do_startup(script_path: str):
     print(f'[Houndour] running startup script at {script_path}')
-    output = subprocess.check_output(script_path)
-    print(f'[Houndour] ran startup script:\n{output}')
+    p = subprocess.check_output('bash ./startup.sh', shell=True).decode('utf-8')
+    print(f'[Houndour] ran startup script:\n\n' + p)
+    print('\n')
 
 if __name__ == '__main__':
     with open('houndour.json') as f:
