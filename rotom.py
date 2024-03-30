@@ -50,7 +50,7 @@ class Rotom:
                     self.__devices[device]['isAlive'] = False
                     self.__devices[device]['needsReboot'] = True
         except Exception as e:
-            print(e)
+            print("[Houndour] error: " + str(e))
 
     def get_reboot_needed(self) -> List[dict]:
         needs_reboot = list()
