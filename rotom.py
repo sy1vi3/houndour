@@ -27,7 +27,7 @@ class Rotom:
     def data_list_to_dict(data: List[dict]) -> dict:
         devices_dict = dict()
         for device in data:
-            devices_dict[device['deviceId']] = device
+            devices_dict[device['origin']] = device
         return devices_dict
     
     def get_status_page(self):
